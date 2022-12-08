@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Reproducción m3u8 embed</title>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+  
+</head>
+<body>
+  <h1>Reproducción m3u8 Embed</h1>
+  <video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="100%" height="100%" 
+  data-setup='{}'>
+  </video>
+  
+  <script>
+    var video = document.getElementById('my_video_1');
+    var videoSrc = 'https://vivo.solumedia.com:19360/crossing/crossing.m3u8?WebM3UCL';
+    if (Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource(videoSrc);
+      hls.attachMedia(video);
+    }
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+  video.src = videoSrc;
+
+} else if (Hls.isSupported()) {
+  var hls = new Hls();
+  hls.loadSource(videoSrc);
+  hls.attachMedia(video);
+}
+  </script>
+
+  
+</body>
+</html>
